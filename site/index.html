@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cristovão Tezza — Rebranding Digital</title>
+    <!-- Importação das fontes solicitadas: Montserrat (Títulos) e Inter (Textos) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --brand-white: #f9f6f0; /* Off-White: Fundo Geral e Respiro */
+        --brand-brown: #4d2515; /* Marrom Café: Estruturas, Títulos e Menu */
+        --brand-rose: #af8377; /* Rosa Antigo: Molduras e Destaques */
+        --brand-text: #333333; /* Cinza Grafite Escuro para Leitura */
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background-color: var(--brand-white);
+        color: var(--brand-text);
+        font-family: "Inter", sans-serif;
+        line-height: 1.7;
+        padding: 1.5rem;
+        min-height: 100vh;
+      }
+
+      /* Moldura Simétrica (Aproveitamento Simétrico do Espaço) */
+      .outer-frame {
+        border: 1px solid var(--brand-brown);
+        padding: 1rem;
+        min-height: calc(100vh - 3rem);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .inner-frame {
+        border: 2px solid var(--brand-rose);
+        padding: 2.5rem 1.5rem;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+      }
+
+      .inner-frame::before,
+      .inner-frame::after {
+        content: "";
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        background-color: var(--brand-white);
+      }
+      .inner-frame::before {
+        top: -2px;
+        left: -2px;
+        border-top: 2px solid var(--brand-rose);
+        border-left: 2px solid var(--brand-rose);
+      }
+      .inner-frame::after {
+        bottom: -2px;
+        right: -2px;
+        border-bottom: 2px solid var(--brand-rose);
+        border-right: 2px solid var(--brand-rose);
+      }
+
+      /* Cabeçalho com seu Logotipo do Projeto */
+      header {
+        text-align: center;
+        margin-bottom: 3.5rem;
+      }
+
+      .brand-logo-img {
+        max-width: 280px;
+        height: auto;
+        margin-bottom: 1rem;
+      }
+
+      /* Barra de Menu Identica ao Site Antigo */
+      nav {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+        border-top: 1px solid rgba(77, 37, 21, 0.2);
+        border-bottom: 1px solid rgba(77, 37, 21, 0.2);
+        padding: 0.8rem 0;
+        flex-wrap: wrap;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: var(--brand-brown);
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: color 0.2s ease;
+      }
+
+      nav a:hover {
+        color: var(--brand-rose);
+      }
+
+      main {
+        max-width: 850px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      .section-title {
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--brand-brown);
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        text-align: center;
+        margin: 4.5rem 0 2rem 0;
+      }
+
+      .section-title::after {
+        content: "♦";
+        display: block;
+        font-size: 0.8rem;
+        color: var(--brand-rose);
+        margin-top: 0.3rem;
+      }
+
+      /* Blocos Editoriais Corridos */
+      .editorial-block {
+        background-color: rgba(175, 131, 119, 0.04);
+        border-left: 4px solid var(--brand-brown);
+        padding: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .bio-text {
+        font-family: "Inter", sans-serif;
+        font-size: 1.05rem;
+        color: var(--brand-text);
+        margin-bottom: 1.5rem;
+        text-align: justify;
+      }
+
+      .bio-text strong {
+        color: var(--brand-brown);
+        font-weight: 700;
+      }
+
+      /* Seção Independente de Fotos (Igual ao Site Antigo) */
+      .photo-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1.5rem;
+        margin: 2rem 0;
+      }
+
+      .photo-card {
+        background: #ffffff;
+        border: 1px solid rgba(77, 37, 21, 0.15);
+        padding: 1rem;
+        text-align: center;
+      }
+
+      .photo-card img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        margin-bottom: 0.8rem;
+        filter: grayscale(100%);
+        border: 1px solid #e4e4e7;
+      }
+
+      .photo-card p {
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--brand-brown);
+      }
+
+      /* Listagem de Textos, Obras e Críticas */
+      .archive-list {
+        list-style: none;
+        margin: 1.5rem 0;
+      }
+
+      .archive-item {
+        padding: 1.2rem;
+        border-bottom: 1px dashed rgba(77, 37, 21, 0.15);
+        background: #ffffff;
+        margin-bottom: 0.5rem;
+        border-left: 3px solid var(--brand-rose);
+      }
+
+      .archive-item h3 {
+        font-family: "Montserrat", sans-serif;
+        font-size: 1rem;
+        color: var(--brand-brown);
+        margin-bottom: 0.3rem;
+      }
+
+      .archive-item p {
+        font-size: 0.95rem;
+        color: var(--brand-text);
+      }
+
+      .archive-item span {
+        display: block;
+        font-size: 0.8rem;
+        color: var(--brand-rose);
+        font-weight: 600;
+        margin-top: 0.5rem;
+      }
+
+      /* Contato */
+      .contact-container {
+        background: #ffffff;
+        padding: 2.5rem;
+        border: 1px solid rgba(77, 37, 21, 0.15);
+      }
+
+      .form-group {
+        margin-bottom: 1.2rem;
+      }
+
+      .form-group label {
+        display: block;
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: var(--brand-brown);
+        text-transform: uppercase;
+        margin-bottom: 0.4rem;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 0.8rem;
+        border: 1px solid #ccc;
+        background-color: var(--brand-white);
+        font-family: "Inter", sans-serif;
+        font-size: 0.95rem;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: var(--brand-rose);
+      }
+
+      .btn-send {
+        width: 100%;
+        background-color: var(--brand-brown);
+        color: var(--brand-white);
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.85rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        padding: 1rem;
+        border: none;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .btn-send:hover {
+        background-color: var(--brand-rose);
+      }
+
+      footer {
+        text-align: center;
+        margin-top: 5rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(77, 37, 21, 0.1);
+      }
+
+      footer p {
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--brand-brown);
+      }
+
+      @media (max-width: 768px) {
+        body {
+          padding: 0.5rem;
+        }
+        .logo-main {
+          font-size: 1.8rem;
+        }
+        nav {
+          gap: 0.8rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="outer-frame">
+      <div class="inner-frame">
+        <!-- Cabeçalho com o Logotipo Oficial -->
+        <header>
+          <img
+            src="../imagens/logo.png"
+            alt="Logotipo Cristovão Tezza"
+            class="brand-logo-img"
+          />
+
+          <nav>
+            <a href="#biografia">Biografia</a>
+            <a href="#obras">Obras</a>
+            <a href="#critica">Crítica</a>
+            <a href="#fotografias">Fotografias</a>
+            <a href="#textos">Textos</a>
+            <a href="#entrevistas">Entrevistas</a>
+            <a href="#redes">Redes Sociais</a>
+            <!-- Nova aba adicionada -->
+            <a href="#contato">Contato</a>
+          </nav>
+        </header>
+
+        <main>
+          <!-- BIOGRAFIA (Sem fotos integradas para respeitar o texto corrido) -->
+          <section id="biografia">
+            <h2 class="section-title">Biografia</h2>
+            <div class="editorial-block">
+              <p class="bio-text">
+                <strong>Cristovão Tezza</strong> nasceu em Lages, Santa
+                Catarina, em 1952. Em 1961, sua família estabeleceu residência
+                definitiva na cidade de Curitiba, Paraná. A capital paranaense
+                converteu-se no ambiente geográfico, social e ficcional mais
+                vital de toda a sua literatura de acervo, onde reside até os
+                dias de hoje.
+              </p>
+              <p class="bio-text">
+                Sua sólida formação artística e acadêmica inclui a passagem pelo
+                Centro Capela de Artes Populares (CECAP) na juventude, estudos
+                literários realizados na Universidade de Coimbra durante a
+                Revolução dos Cravos em Portugal, e a docência estável como
+                professor de Literatura Brasileira na Universidade Federal do
+                Paraná (UFPR). Em 2001, obteve o título de doutor pela
+                Universidade de São Paulo (USP). No ano de 2009, desligou-se das
+                atividades universitárias para dedicar-se à criação romanesca.
+              </p>
+            </div>
+          </section>
+
+          <!-- OBRAS (Apenas informações textuais, sem links para lojas externas) -->
+          <section id="obras">
+            <h2 class="section-title">Obras</h2>
+            <ul class="archive-list">
+              <li class="archive-item">
+                <h3>O Filho Eterno (2007)</h3>
+                <p>
+                  Romance autobiográfico consagrado internacionalmente, vencedor
+                  dos prêmios Jabuti, APCA, Bravo! e Portugal Telecom de
+                  Literatura.
+                </p>
+              </li>
+              <li class="archive-item">
+                <h3>Trapo (1988)</h3>
+                <p>
+                  Obra em formato de correspondência epistolar que marcou a
+                  consolidação e projeção crítica do autor no ecossistema
+                  nacional.
+                </p>
+              </li>
+              <li class="archive-item">
+                <h3>Visita ao Pai (2024)</h3>
+                <p>
+                  Narrativa de autoficção contemporânea que investiga os
+                  labirintos da memória familiar sob o cenário urbano do Sul.
+                </p>
+              </li>
+            </ul>
+          </section>
+
+          <!-- CRÍTICA -->
+          <section id="critica">
+            <h2 class="section-title">Crítica</h2>
+            <div class="editorial-block">
+              <p
+                class="bio-text"
+                style="font-style: italic; margin-bottom: 1.5rem"
+              >
+                "A ficção contemporânea de Cristovão Tezza equilibra de forma
+                magistral o rigor formal clássico com uma investigação
+                psicológica cortante das relações humanas." — Caderno de
+                Resenhas Acadêmicas.
+              </p>
+              <p class="bio-text" style="font-style: italic">
+                "Tezza constrói em sua prosa uma topografia afetiva de Curitiba
+                que transcende o espaço urbano, transformando a cidade em
+                personagem de suas autoficções." — Revista Estudos de Letras.
+              </p>
+            </div>
+          </section>
+
+          <!-- FOTOGRAFIAS (Seção isolada dedicada apenas a imagens conceituais do acervo) -->
+          <section id="fotografias">
+            <h2 class="section-title">Fotografias</h2>
+            <div class="photo-gallery">
+              <div class="photo-card">
+                <img src="../imagens/images (1).jpg" alt="Arquivo Coimbra" />
+                <p>Estudos na Universidade de Coimbra (Anos 70)</p>
+              </div>
+              <div class="photo-card">
+                <img src="../imagens/images.jpg" alt="Cátedra UFPR" />
+                <p>Atividade de Docência Universitária (UFPR)</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- TEXTOS -->
+          <section id="textos">
+            <h2 class="section-title">Textos</h2>
+            <ul class="archive-list">
+              <li class="archive-item">
+                <h3>A Máquina de Caminhar (Crônicas)</h3>
+                <p>
+                  Reflexões editoriais sobre o cotidiano, a produção de arte e a
+                  caminhada literária nas metrópoles modernas.
+                </p>
+              </li>
+              <li class="archive-item">
+                <h3>Ensaio Acadêmico: Literatura e Autoficção</h3>
+                <p>
+                  Análise teórica sobre os limites entre a memória biográfica
+                  real e a construção textual romanesca.
+                </p>
+              </li>
+            </ul>
+          </section>
+
+          <!-- ENTREVISTAS -->
+          <section id="entrevistas">
+            <h2 class="section-title">Entrevistas</h2>
+            <ul class="archive-list">
+              <li class="archive-item">
+                <h3>
+                  Entrevista Especial: O Processo da Escrita Contemporânea
+                </h3>
+                <p>
+                  Reflexões aprofundadas sobre o impulso de transformar
+                  memórias, autoficção e sentimentos em literatura ficcional de
+                  alto valor intelectual.
+                </p>
+
+                <div style="margin-top: 1rem">
+                  <!-- Link Direto Exclusivo: Entrevista Completa em Vídeo (YouTube) -->
+                  <a
+                    href="https://youtube.com"
+                    target="_blank"
+                    style="
+                      display: inline-block;
+                      color: var(--brand-white);
+                      background-color: var(--brand-rose);
+                      font-family: &quot;Montserrat&quot;, sans-serif;
+                      font-size: 0.8rem;
+                      font-weight: 700;
+                      text-decoration: none;
+                      text-transform: uppercase;
+                      letter-spacing: 0.5px;
+                      padding: 0.6rem 1.2rem;
+                      transition: all 0.3s;
+                    "
+                  >
+                    Assistir no UBE Cast (Vídeo) 🎥
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </section>
+          <!-- REDES SOCIAIS E CANAIS OFICIAIS (Apenas canais reais e ativos) -->
+          <section id="redes">
+            <h2 class="section-title">Canais Oficiais</h2>
+            <p class="bio-text" style="text-align: center; margin-bottom: 2rem">
+              Conecte-se ao ecossistema literário e acadêmico do autor através
+              dos canais oficiais ativos:
+            </p>
+
+            <div
+              style="
+                display: flex;
+                justify-content: center;
+                gap: 2.5rem;
+                margin-bottom: 3rem;
+                flex-wrap: wrap;
+              "
+            >
+              <!-- Canal 1: Instagram Oficial do Autor -->
+              <!-- Canal 1: Instagram Oficial do Autor (Link Correto) -->
+              <a
+                href="https://www.instagram.com/cristovaotezza/"
+                target="_blank"
+                style="
+                  font-family: &quot;Montserrat&quot;, sans-serif;
+                  font-size: 0.9rem;
+                  font-weight: 700;
+                  color: var(--brand-brown);
+                  text-decoration: none;
+                  text-transform: uppercase;
+                  letter-spacing: 1px;
+                  border-bottom: 2px solid var(--brand-rose);
+                  padding-bottom: 4px;
+                  transition: color 0.3s;
+                "
+              >
+                Instagram Oficial
+              </a>
+            </div>
+          </section>
+
+          <!-- CONTATO -->
+          <section id="contato">
+            <h2 class="section-title">Contato</h2>
+            <div class="contact-container">
+              <form onsubmit="event.preventDefault()">
+                <div class="form-group">
+                  <label for="name">Nome Completo</label>
+                  <input type="text" id="name" placeholder="Seu nome" />
+                </div>
+                <div class="form-group">
+                  <label for="email">E-mail</label>
+                  <input
+                    type="email"
+                    id="email"
+                    placeholder="seu-email@provedor.com"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="message">Mensagem</label>
+                  <textarea
+                    id="message"
+                    rows="5"
+                    placeholder="Escreva sua mensagem profissional..."
+                  ></textarea>
+                </div>
+                <button type="submit" class="btn-send">Enviar</button>
+              </form>
+            </div>
+          </section>
+        </main>
+
+        <footer>
+          <p>
+            © Presença Digital — Identidade Visual e Rebranding Acadêmico — 2026
+          </p>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>
